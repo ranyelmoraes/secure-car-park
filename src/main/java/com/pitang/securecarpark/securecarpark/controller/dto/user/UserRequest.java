@@ -1,5 +1,6 @@
 package com.pitang.securecarpark.securecarpark.controller.dto.user;
 
+import com.pitang.securecarpark.securecarpark.controller.dto.car.CarRequest;
 import com.pitang.securecarpark.securecarpark.entity.Car;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -30,5 +31,5 @@ public class UserRequest {
     private String password;
     @NotBlank
     private String phone;
-    private List<Car> cars;
+    private List<CarRequest> cars;
 }
