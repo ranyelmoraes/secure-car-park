@@ -29,7 +29,7 @@ public class ExceptionServiceHandler {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorResponse(HttpStatus.NOT_FOUND,  ex.getMessage()));
+                .body(new ErrorResponse(HttpStatus.NOT_FOUND.value(),  ex.getMessage()));
     }
 
     @ExceptionHandler(LoginUniqueViolationException.class)
@@ -38,16 +38,15 @@ public class ExceptionServiceHandler {
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorResponse( HttpStatus.CONFLICT, ex.getMessage()));
+                .body(new ErrorResponse( HttpStatus.CONFLICT.value(), ex.getMessage()));
     }
 
     @ExceptionHandler(EmailUniqueViolationException.class)
     public ResponseEntity<ErrorResponse> uniqueEmailViolationException(RuntimeException ex) {
-        log.error("Api Error - ", ex);
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorResponse( HttpStatus.CONFLICT, ex.getMessage()));
+                .body(new ErrorResponse( HttpStatus.CONFLICT.value(), ex.getMessage()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -70,7 +69,7 @@ public class ExceptionServiceHandler {
         return ResponseEntity
                 .status(HttpStatus.UNPROCESSABLE_ENTITY)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorResponse( HttpStatus.UNPROCESSABLE_ENTITY, message));
+                .body(new ErrorResponse( HttpStatus.UNPROCESSABLE_ENTITY.value(), message));
     }
 
 
@@ -79,7 +78,7 @@ public class ExceptionServiceHandler {
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorResponse( HttpStatus.CONFLICT, ex.getMessage()));
+                .body(new ErrorResponse( HttpStatus.CONFLICT.value(), ex.getMessage()));
 
     }
 

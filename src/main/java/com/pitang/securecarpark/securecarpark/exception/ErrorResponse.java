@@ -10,9 +10,9 @@ public class ErrorResponse {
     private String message;
     private int errorCode;
 
-    public ErrorResponse(HttpStatus errorCode, String message) {
+    public ErrorResponse(int errorCode, String message) {
         this.message = message;
-        this.errorCode = errorCode.value();
+        this.errorCode = errorCode;
     }
 
 }
