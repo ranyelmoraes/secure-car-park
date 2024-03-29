@@ -38,7 +38,6 @@ public class UserIntegrationTest {
         Assertions.assertThat(responseBody).isNotNull();
         Assertions.assertThat(responseBody.getId()).isNotNull();
         Assertions.assertThat(responseBody.getEmail().equals("teste5@gmail.com"));
-        Assertions.assertThat(responseBody.getLogin().equals("tester"));
         Assertions.assertThat(responseBody.getFirstName().equals("Teste"));
         Assertions.assertThat(responseBody.getLastName().equals("Criacao"));
     }
