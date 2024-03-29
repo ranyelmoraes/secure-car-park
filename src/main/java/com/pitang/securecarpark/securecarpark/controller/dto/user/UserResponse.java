@@ -14,8 +14,6 @@ public class UserResponse {
     private String lastName;
     private String email;
     private Date birthday;
-    private String login;
-    private String password;
     private String phone;
     private List<Car> cars;
 }
