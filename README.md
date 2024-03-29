@@ -52,8 +52,7 @@ mvn clean install
 
 3. **Execução da Aplicação:**
 
-java -jar target/nome-do-arquivo.jar
-
+java -jar target/secure-car-park-{versão-pom}.jar
 
 4. **Acesso à API:**
 Acesse a API em `http://localhost:8080`.
