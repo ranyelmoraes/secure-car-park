@@ -25,7 +25,7 @@ import java.util.Optional;
 
 @Tag(name = "Users", description = "Cars CRUD endpoints")
 @RestController
-@RequestMapping("/api/cars")
+@RequestMapping("/api/v1/cars")
 public class CarController {
 
     @Autowired
