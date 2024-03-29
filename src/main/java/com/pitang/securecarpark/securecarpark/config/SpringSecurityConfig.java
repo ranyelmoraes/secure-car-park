@@ -20,6 +20,14 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 public class SpringSecurityConfig {
 
+    private static final String[] DOCUMENTATION_OPENAPI = {
+            "/docs/index.html",
+            "/open-api.html", "/open-api/**",
+            "/v3/api-docs/**",
+            "/swagger-ui-custom.html", "/swagger-ui.html", "/swagger-ui/**",
+            "/**.html", "/webjars/**", "/configuration/**", "/swagger-resources/**"
+    };
+
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
         return http
@@ -29,6 +37,8 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, "api/users/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "api/users").permitAll()
+                        .requestMatchers(DOCUMENTATION_OPENAPI).permitAll()
+                        .requestMatchers("/open-api.html").permitAll()
                         .requestMatchers("api/signin").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session

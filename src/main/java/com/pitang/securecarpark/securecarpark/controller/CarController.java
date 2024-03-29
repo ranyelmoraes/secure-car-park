@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Tag(name = "Users", description = "Cars CRUD endpoints")
+@Tag(name = "Cars", description = "Cars CRUD endpoints")
 @RestController
 @RequestMapping("/api/cars")
 public class CarController {
