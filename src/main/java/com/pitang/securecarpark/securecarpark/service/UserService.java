@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,7 @@ import java.util.Objects;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
     public List<User> getAll() {
@@ -35,6 +37,7 @@ public class UserService {
             }
         }
         try {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             return userRepository.save(user);
         } catch (DataIntegrityViolationException ex) {
 
@@ -64,14 +67,13 @@ public class UserService {
         user.setLastName(updatedUser.getLastName());
         user.setEmail(updatedUser.getEmail());
         user.setBirthday(updatedUser.getBirthday());
+        user.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
         user.setLogin(updatedUser.getLogin());
-        user.setPassword(updatedUser.getPassword());
         user.setPhone(updatedUser.getPhone());
         user.setCars(updatedUser.getCars());
 
         return userRepository.save(user);
     }
-
 
     @Transactional
     public ResponseEntity<?> deleteUser(Long id) {
@@ -80,5 +82,12 @@ public class UserService {
 
         userRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @Transactional(readOnly = true)
+    public User findByLogin(String login) {
+        return userRepository.findByLogin(login).orElseThrow(
+                () -> new EntityNotFoundException("User login not found")
+        );
     }
 }
