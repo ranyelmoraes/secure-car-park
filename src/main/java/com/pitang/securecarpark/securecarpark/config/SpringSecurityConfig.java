@@ -34,12 +34,13 @@ public class SpringSecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .formLogin(form-> form.disable())
                 .httpBasic(basic -> basic.disable())
+                //.securityMatcher(PathRequest.toH2Console())
+                .headers((headers) -> headers.frameOptions((frame) -> frame.sameOrigin()))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, "api/users/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "api/users").permitAll()
                         .requestMatchers(DOCUMENTATION_OPENAPI).permitAll()
-                        .requestMatchers("/open-api.html").permitAll()
-                        .requestMatchers("api/signin").permitAll()
+                        .requestMatchers(HttpMethod.POST, "api/signin").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -47,6 +48,7 @@ public class SpringSecurityConfig {
                         jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class
                 )
                 .build();
+
     }
 
     @Bean

@@ -29,7 +29,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
             return;
         }
 
-        if(JwtUtils.isValid(token)){
+        if(!JwtUtils.isValid(token)){
             log.warn("Unauthorized - invalid session");
             filterChain.doFilter(request, response);
             return;
