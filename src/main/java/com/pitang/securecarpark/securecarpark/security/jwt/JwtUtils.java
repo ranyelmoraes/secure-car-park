@@ -3,13 +3,11 @@ package com.pitang.securecarpark.securecarpark.security.jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -22,7 +20,7 @@ public class JwtUtils {
     public static final String SECRET_KEY = "MZsaksmzijdsSWHSszckx2K23SMZMXFJ";
     public static final long EXPIRE_DAYS = 0;
     public static final long EXPIRE_HOURS=0;
-    public static final long EXPIRE_MINUTES = 1;
+    public static final long EXPIRE_MINUTES = 10;
 
     private JwtUtils(){}
 

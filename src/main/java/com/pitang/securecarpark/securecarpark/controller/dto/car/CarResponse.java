@@ -1,6 +1,5 @@
 package com.pitang.securecarpark.securecarpark.controller.dto.car;
 
-import com.pitang.securecarpark.securecarpark.controller.dto.user.UserResponse;
 import lombok.*;
 
 @Getter @Setter
@@ -13,6 +12,5 @@ public class CarResponse {
     private String licensePlate;
     private String model;
     private String color;
-    private UserResponse userId;
 
 }

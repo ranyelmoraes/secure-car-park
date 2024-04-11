@@ -7,6 +7,7 @@ import com.pitang.securecarpark.securecarpark.exception.EntityNotFoundException;
 import com.pitang.securecarpark.securecarpark.exception.LoginUniqueViolationException;
 import com.pitang.securecarpark.securecarpark.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import java.util.Objects;
 public class UserService {
 
     private final UserRepository userRepository;
+
     private final PasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
