@@ -14,12 +14,7 @@
 	<name>secure-car-park</name>
 	<description>Secure Vehicle Parking System</description>
 	<properties>
-
-		<!-- Adicione esta tag para desativar a configuração automática do release -->
-		<maven.compiler.release></maven.compiler.release>
-
-		<maven.compiler.source>15</maven.compiler.source>
-		<maven.compiler.target>15</maven.compiler.target>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
