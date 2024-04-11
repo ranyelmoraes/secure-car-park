@@ -33,7 +33,7 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-    @Operation(summary = "Get All Cars", security = @SecurityRequirement(name = "bearer-jwt"),
+    @Operation(summary = "Get All Cars", security = @SecurityRequirement(name = "security"),
             responses = {
             @ApiResponse(
                     responseCode = "200", description = "Sucess",
@@ -48,7 +48,7 @@ public class CarController {
         return ResponseEntity.ok(CarMapper.toList(cars));
     }
 
-    @Operation(summary = "Find car by ID",security = @SecurityRequirement(name = "bearer-jwt"),
+    @Operation(summary = "Find car by ID",security = @SecurityRequirement(name = "security"),
             responses = {
             @ApiResponse(
                     responseCode = "200", description = "Car Found Successfully",
@@ -73,7 +73,7 @@ public class CarController {
         }
     }
 
-    @Operation(summary = "Create Car", security = @SecurityRequirement(name = "bearer-jwt"),
+    @Operation(summary = "Create Car", security = @SecurityRequirement(name = "security"),
             responses = {
             @ApiResponse(
                     responseCode = "201", description = "Created Sucess",
@@ -102,7 +102,7 @@ public class CarController {
 
     }
 
-    @Operation(summary = "Update car by ID",security = @SecurityRequirement(name = "bearer-jwt"),
+    @Operation(summary = "Update car by ID",security = @SecurityRequirement(name = "security"),
             responses = {
             @ApiResponse(
                     responseCode = "200", description = "Car Updated Successfully",
@@ -125,7 +125,7 @@ public class CarController {
         return ResponseEntity.ok(CarMapper.carToDto(updatedCar));
     }
 
-    @Operation(summary = "Delete Car by ID", security = @SecurityRequirement(name = "bearer-jwt"),
+    @Operation(summary = "Delete Car by ID", security = @SecurityRequirement(name = "security"),
             responses = {
             @ApiResponse(
                     responseCode = "204", description = "Car Deleted Successfully",

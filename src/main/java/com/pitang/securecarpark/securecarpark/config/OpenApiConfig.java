@@ -40,6 +40,6 @@ public class OpenApiConfig {
                 .in(SecurityScheme.In.HEADER)
                 .scheme("bearer")
                 .bearerFormat("JWT")
-                .name("bearer-jwt");
+                .name("security");
     }
 }
