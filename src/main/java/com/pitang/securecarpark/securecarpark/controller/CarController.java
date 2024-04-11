@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,8 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-    @Operation(summary = "Get All Cars", responses = {
+    @Operation(summary = "Get All Cars", security = @SecurityRequirement(name = "bearer-jwt"),
+            responses = {
             @ApiResponse(
                     responseCode = "200", description = "Sucess",
                     content = @Content(mediaType = "application/json",
@@ -46,7 +48,8 @@ public class CarController {
         return ResponseEntity.ok(CarMapper.toList(cars));
     }
 
-    @Operation(summary = "Find car by ID", responses = {
+    @Operation(summary = "Find car by ID",security = @SecurityRequirement(name = "bearer-jwt"),
+            responses = {
             @ApiResponse(
                     responseCode = "200", description = "Car Found Successfully",
                     content = @Content(mediaType = "application/json",
@@ -70,7 +73,8 @@ public class CarController {
         }
     }
 
-    @Operation(summary = "Create Car", responses = {
+    @Operation(summary = "Create Car", security = @SecurityRequirement(name = "bearer-jwt"),
+            responses = {
             @ApiResponse(
                     responseCode = "201", description = "Created Sucess",
                     content = @Content(mediaType = "application/json",
@@ -98,7 +102,8 @@ public class CarController {
 
     }
 
-    @Operation(summary = "Update car by ID", responses = {
+    @Operation(summary = "Update car by ID",security = @SecurityRequirement(name = "bearer-jwt"),
+            responses = {
             @ApiResponse(
                     responseCode = "200", description = "Car Updated Successfully",
                     content = @Content(mediaType = "application/json",
@@ -120,7 +125,8 @@ public class CarController {
         return ResponseEntity.ok(CarMapper.carToDto(updatedCar));
     }
 
-    @Operation(summary = "Delete Car by ID", responses = {
+    @Operation(summary = "Delete Car by ID", security = @SecurityRequirement(name = "bearer-jwt"),
+            responses = {
             @ApiResponse(
                     responseCode = "204", description = "Car Deleted Successfully",
                     content = @Content(mediaType = "application/json")),
@@ -130,6 +136,7 @@ public class CarController {
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorResponse.class))),
     })
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCarByID(@PathVariable Long id) {
         return carService.deleteCarById(id);
