@@ -27,6 +27,6 @@ public class OpenApiConfig {
                                 .license(new License().name("Apache 2.0").url("https://www.apache.org/licenses/LICENSE-2.0"))
                                 .contact(new Contact().name(" : Ranyel Moraes").email("ranyelmoraes@hotmail.com"))
 
-                ).servers(Collections.singletonList(new Server().url("http://localhost:" + serverPort)));
+                ).servers(Collections.singletonList(new Server().url("/")));
     }
 }
