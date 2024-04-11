@@ -14,15 +14,12 @@
 	<name>secure-car-park</name>
 	<description>Secure Vehicle Parking System</description>
 	<properties>
-		<!-- Remova a configuração da versão do Java -->
-		<!-- <java.version>17</java.version> -->
 
 		<!-- Adicione esta tag para desativar a configuração automática do release -->
 		<maven.compiler.release></maven.compiler.release>
 
-		<!-- Configuração manual da versão do Java -->
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>15</maven.compiler.source>
+		<maven.compiler.target>15</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
