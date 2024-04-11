@@ -3,13 +3,12 @@ package com.pitang.securecarpark.securecarpark.controller;
 import com.pitang.securecarpark.securecarpark.controller.dto.car.CarRequest;
 import com.pitang.securecarpark.securecarpark.controller.dto.car.CarResponse;
 import com.pitang.securecarpark.securecarpark.controller.dto.mapper.CarMapper;
-import com.pitang.securecarpark.securecarpark.controller.dto.mapper.UserMapper;
-import com.pitang.securecarpark.securecarpark.controller.dto.user.UserRequest;
-import com.pitang.securecarpark.securecarpark.controller.dto.user.UserResponse;
 import com.pitang.securecarpark.securecarpark.entity.Car;
 import com.pitang.securecarpark.securecarpark.entity.User;
 import com.pitang.securecarpark.securecarpark.exception.ErrorResponse;
 import com.pitang.securecarpark.securecarpark.service.CarService;
+import com.pitang.securecarpark.securecarpark.service.UserService;
+import com.pitang.securecarpark.securecarpark.utils.UserDetailsUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -29,6 +28,8 @@ import java.util.Optional;
 public class CarController {
 
     @Autowired
+    private UserService userService;
+    @Autowired
     private CarService carService;
 
     @Operation(summary = "Get All Cars", responses = {
@@ -39,7 +40,9 @@ public class CarController {
     })
     @GetMapping
     public  ResponseEntity<List<CarResponse>> getAllCars() {
-        List<Car> cars = carService.getAllCars();
+        String username = UserDetailsUtil.getCurrentUsername();
+        User user = userService.findByLogin(username);
+        List<Car> cars = user.getCars();
         return ResponseEntity.ok(CarMapper.toList(cars));
     }
 
@@ -56,8 +59,15 @@ public class CarController {
     })
     @GetMapping("/{id}")
     public ResponseEntity<CarResponse> getCarById(@PathVariable Long id) {
-        Car car = carService.getCarById(id);
-        return ResponseEntity.ok(CarMapper.carToDto(car));
+        String username = UserDetailsUtil.getCurrentUsername();
+        User user = userService.findByLogin(username);
+        Optional<Car> optionalCar = user.getCars().stream().filter(car -> car.getId().equals(id)).findFirst();
+        if (optionalCar.isPresent()) {
+            Car car = optionalCar.get();
+            return ResponseEntity.ok(CarMapper.carToDto(car));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @Operation(summary = "Create Car", responses = {
@@ -76,10 +86,16 @@ public class CarController {
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorResponse.class))),
     })
+    @CrossOrigin(origins = "*", methods = {RequestMethod.POST}, allowedHeaders = {"Content-Type", "Authorization"})
     @PostMapping
     public ResponseEntity<CarResponse> create(@Valid @RequestBody CarRequest car) {
-        Car newCar = carService.saveCar(CarMapper.dtoToCar(car));
-        return ResponseEntity.status(HttpStatus.CREATED).body(CarMapper.carToDto(newCar));
+            String username = UserDetailsUtil.getCurrentUsername();
+            User user = userService.findByLogin(username);
+            Car c = CarMapper.dtoToCar(car);
+            c.setUserId(user);
+            Car newCar = carService.saveCar(c);
+            return ResponseEntity.status(HttpStatus.CREATED).body(CarMapper.carToDto(newCar));
+
     }
 
     @Operation(summary = "Update car by ID", responses = {
