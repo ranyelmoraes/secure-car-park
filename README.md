@@ -60,6 +60,19 @@ Acesse a API em `http://localhost:8080`.
 5. **Documentação da API:**
 Acesse a documentação da API em `http://localhost:8080/open-api.html`.
 
+
+
+## Links Úteis
+
+ - **Link para a aplicação do frontend: https://securecarpark-frontend-bcbdef122ce4.herokuapp.com/home**
+ - **Link para o código fonte do frontend: https://github.com/ranyelmoraes/secure-car-park-frontend**
+ - **Link para a aplicação do backend: https://securecarpark-api-dd4eb9b7d738.herokuapp.com/**
+ - **Link para a aplicação do backend: https://github.com/ranyelmoraes/secure-car-park**
+
+**Todas as requisições possíveis estão listadas no swagger localizado em: https://securecarpark-api-dd4eb9b7d738.herokuapp.com/open-api.html**
+**o frontend não contém todas as funcionalidades que são disponibilizadas pelo backend pois ainda está em desenvolvimento.**
+**o projeto foi deployado no Heroku para validação e testes**
+
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma *issue* ou enviar um *pull request* com melhorias, correções ou novas funcionalidades.
