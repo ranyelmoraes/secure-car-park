@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "ff8660f3-8c0f-4402-bdc8-37c73f287e3b",
+		"name": "securecarpark-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30149967"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Usuarios-Consulta Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/users",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios-Consulta Usuario por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/users/1",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios-Deletar Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcxMjc5MDU4OSwiZXhwIjoxNzEyNzkxMTg5fQ.PItKU0BBQXU-xm6Yyy6MdqavV_CvD-AAwtnQitJ9kLM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/users/users/1",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios-Criar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"john.does@example.com\",\r\n    \"birthday\": \"1985-09-15\",\r\n    \"login\": \"john_doe85s2\",\r\n    \"password\": \"pssw0rds\",\r\n    \"phone\": \"977777777\",\r\n    \"cars\": [\r\n        {\r\n            \"year\": 2020,\r\n            \"licensePlate\": \"ABC-1232\",\r\n            \"model\": \"Mercedes-Benz\",\r\n            \"color\": \"Black\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios-Atualizar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Rany\",\r\n    \"lastName\": \"Bala\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"birthday\": \"1985-09-15\",\r\n    \"login\": \"john_doe85\",\r\n    \"password\": \"p@ssw0rd\",\r\n    \"phone\": \"22222222222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/users/1",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Requisições para o endpoint /users"
+		},
+		{
+			"name": "Car",
+			"item": [
+				{
+					"name": "Carros-Consulta Todos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcxMjc5MzA4NywiZXhwIjoxNzEyNzkzNjg3fQ.j7QjtW4yJF46BbJXfZA1GsVzUW6V-1FqF5ByfJ8If5E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/cars",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Carros-Consulta Carro por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoZWxsby53b3JsZCIsImlhdCI6MTcxMjc0OTE5NSwiZXhwIjoxNzEyNzQ5Nzk1fQ.OIK7zfgz5IBNjwq1y_O1FkcTbblOC31eOnxlabD1dO4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/cars/3",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"cars",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Carros-Deletar Carro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcxMjc5MDU4OSwiZXhwIjoxNzEyNzkxMTg5fQ.PItKU0BBQXU-xm6Yyy6MdqavV_CvD-AAwtnQitJ9kLM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/3",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Carros-Criar Carro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW55ZWxtb3JhZXMiLCJpYXQiOjE3MTI4NzQ3MjgsImV4cCI6MTcxMjg3NTMyOH0.sAJQuu0XABwSoutjTbzSlOZnVt928-zu1vcRUWcY_jI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"year\": 2020,\r\n    \"licensePlate\": \"ABB-1235\",\r\n    \"model\": \"Toyota\",\r\n    \"color\": \"black\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/cars",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Carros-Atualizar Carro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"year\": 2020,\r\n    \"licensePlate\": \"ABC-1235\",\r\n    \"model\": \"Mercedes-Benz\",\r\n    \"color\": \"Pink\",\r\n    \"userId\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/cars/3",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"cars",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Requisições para o endpoint /cars"
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"teste\",\r\n    \"password\": \"teste123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/signin",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcxMjc5OTUyNywiZXhwIjoxNzEyODAwMTI3fQ.N8IcQRN00VlH4IDryycvXpmoDWQECIzWB5-FZHGlkfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://securecarpark-api-dd4eb9b7d738.herokuapp.com/api/me",
+							"protocol": "https",
+							"host": [
+								"securecarpark-api-dd4eb9b7d738",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Requisições aos endpoints de autenticação e informações do usuário logado"
+		}
+	]
+}
